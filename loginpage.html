@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Login Page</title>
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #f5f5f5;
+  }
+  #login-container {
+    background-color: #ffffff;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.1);
+    width: 320px;
+    text-align: center;
+  }
+  input[type="text"],
+  input[type="password"],
+  button {
+    display: block;
+    width: calc(100% - 20px);
+    padding: 15px;
+    margin: 10px auto;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+    font-size: 16px;
+  }
+  button {
+    background-color: #007bff;
+    color: #fff;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  button:hover {
+    background-color: #0056b3;
+  }
+  .error {
+    color: red;
+    font-size: 14px;
+    margin-top: 5px;
+    display: none;
+  }
+</style>
+</head>
+<body>
+
+<div id="login-container">
+  <h2 style="margin-bottom: 20px;">Login</h2>
+  <input type="text" id="username" placeholder="Username">
+  <input type="password" id="password" placeholder="Password">
+  <button onclick="login()">Login</button>
+  <div id="error-message" class="error">Please enter both username and password</div>
+  <div id="error-message-username" class="error">Please enter  username</div>
+  <div id="error-message-password" class="error">Please enter password</div>
+
+</div>
+
+<script>
+  function login() {
+    var username = document.getElementById('username').value;
+    var password = document.getElementById('password').value;
+
+    // Check if username or password is empty
+    if (username.trim() === '' && password.trim() === '') {
+        document.getElementById('error-message-password').style.display = 'none';
+        document.getElementById('error-message-username').style.display = 'none';
+      document.getElementById('error-message').style.display = 'block';
+      return;
+    }
+    else if(username.trim() === ''){
+        document.getElementById('error-message').style.display = 'none';
+        document.getElementById('error-message-password').style.display = 'none';
+        document.getElementById('error-message-username').style.display = 'block';
+      return;
+    }else if(password.trim() === '')
+    {
+        document.getElementById('error-message').style.display = 'none';
+        document.getElementById('error-message-username').style.display = 'none';
+        document.getElementById('error-message-password').style.display = 'block';
+      return;
+    }
+
+    // Here you can perform further validation or authentication
+    // For simplicity, let's just show an alert with the entered credentials
+    alert('Username: ' + username + '\nPassword: ' + password);
+    document.getElementById('error-message-password').style.display = 'none';
+        document.getElementById('error-message-username').style.display = 'none';
+      document.getElementById('error-message').style.display = 'none';
+  }
+</script>
+
+</body>
+</html>
